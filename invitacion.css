@@ -1,0 +1,839 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Fondo que abarca toda la pantalla SIEMPRE */
+.background-image {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('img/background.jpg') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor centrado */
+.contenido-centro {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.contenido-centro img {
+  max-width: 95%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .contenido-centro img {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+}
+.seccion-cancion {
+  width: 100%;
+  height: 100vh;
+  background: url('img/novios.avif') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  flex-direction: column;
+  padding: 20px;
+  /* Si realmente necesitas ese margin-bottom negativo, mantenlo, si no, elimínalo */
+  margin-bottom: -60px; 
+}
+
+
+.seccion-cancion {
+  margin-bottom: -60px; /* Compensa el empuje hacia abajo */
+}
+
+
+
+.contenido-cancion h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.btn-play {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: parpadeo 1.5s infinite, flotante 3s ease-in-out infinite;
+  margin-bottom: 30px;
+}
+
+.contador {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contador div {
+  text-align: center;
+}
+
+.contador span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.contador p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+/* Padres */
+.seccion-padres {
+  background-color: #fffaf5;
+  padding: 60px 20px;
+  text-align: center;
+  color: darkgrey; /* Fuente en negro */
+  font-family: 'Merriweather', serif;
+}
+
+.contenedor-padre {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.imagen-padres {
+  display: block;
+  width: 100vw;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.titulo-seccion {
+  font-size: 2rem;
+  margin: 30px 0 20px;
+  color: darkgray;
+  position: relative;
+}
+
+.divisor-padres {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding: 30px 0;
+  position: relative;
+}
+
+.divisor-padres::before,
+.divisor-padres::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; /* Cambia este valor para ajustar largo */
+  height: 1px;
+  background-color: black;
+}
+
+.divisor-padres::before {
+  top: 0;
+}
+
+.divisor-padres::after {
+  bottom: 0;
+}
+
+
+.lado {
+  flex: 1;
+  min-width: 200px;
+}
+
+.lado h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: darkgray;
+}
+
+.lado p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.padrinos {
+  font-size: 1.1rem;
+  color: darkgray;
+   margin-bottom: 10px;
+  
+}
+
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+  .titulo-seccion {
+    font-size: 1.5rem;
+  }
+
+  .lado h3 {
+    font-size: 1.1rem;
+  }
+
+  .lado p,
+  .padrinos {
+    font-size: 0.95rem;
+  }
+
+  .divisor-padres {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+
+/* Sección fondo tipo papel fECHA y LUGAR */
+.seccion-papel {
+  background-color: #f5f0e6;
+  background-image: url('img/papel-textura-beige.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tarjeta blanca dentro */
+.tarjeta-interior {
+  background-color: #fff;
+  background-image: url('img/textura-blanca-sutil.png');
+  background-size: cover;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-family: 'Merriweather', serif;
+}
+
+/* Títulos */
+.titulo-seccion {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.fecha,
+.lugar {
+font-family: "Damion", cursive;
+  font-size: 2rem;
+  margin-bottom: 10px;
+    
+}
+
+/* Botón de ubicación */
+.btn-ubicacion {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 12px 24px;
+  background-color: rgba(66, 150, 66, 0.911); /* */
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ubicacion:hover {
+  background-color: #8b6b47;
+}
+
+/* Imagen decorativa */
+.imagen-ubicacion {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de itinerario */
+.seccion-itinerario {
+background-color: #fcfcfc;
+background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/*https://www.transparenttextures.com//*/
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  color: #333; /* Texto oscuro para contraste */
+  font-family: 'Merriweather', serif;
+}
+
+.contenedor-itinerario {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: center;
+}
+
+.evento h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.evento img {
+  width: 100%;
+  max-width: 200px; /* Imagen más pequeña */
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border: none;         /* Sin borde */
+  box-shadow: none;     /* Sin sombra */
+  border-radius: 0;     /* Sin esquinas redondeadas */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .evento h3 {
+    font-size: 1.2rem;
+  }
+
+  .evento img {
+    max-width: 65%;
+  }
+}
+
+
+
+
+/* Sección vestimenta */
+.seccion-vestimenta {
+  background-color: #ffffff;
+  padding: 0;
+  font-family: 'Merriweather', serif;
+  color: #333;
+  text-align: center;
+}
+
+.imagen-vestimenta {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.contenedor-vestimenta {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.titulo-seccion {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.bloque-vestimenta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.vestimenta-col {
+  flex: 1;
+  min-width: 280px;
+}
+
+.vestimenta-col h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.nota-mujer {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 15px;
+}
+
+/* Botón Pinterest */
+.btn-pinterest {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(66, 150, 66, 0.911);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pinterest:hover {
+  background-color: rgba(66, 150, 66, 0.911);
+}
+
+.btn-pinterest img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .titulo-seccion {
+    font-size: 1.6rem;
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+  }
+
+  .btn-pinterest {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+/* Galeria tres imagenes */
+.seccion-flip {
+  background-color: #ccc0a3;
+  background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-flip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.flip-card {
+  width: 250px;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.volteada .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-frente, .flip-atras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.flip-frente img,
+.flip-atras img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-atras {
+  transform: rotateY(180deg);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .flip-card {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card {
+    width: 90%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+  }
+}
+
+/* Mesa de regalos */
+
+.seccion-regalos {
+  background-color: #b7d6a4;
+background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contenedor-regalos {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.titulo-seccion {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2d2d2d;
+  font-family: 'Georgia', serif;
+}
+
+.texto-regalos {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.btn-regalo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #5e8a64; /* Verde militar oscuro */
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-regalo:hover {
+  background-color: #3b503e;
+}
+
+.icono-regalo {
+  font-size: 1.4rem;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .titulo-seccion {
+    font-size: 1.5rem;
+  }
+
+  .texto-regalos {
+    font-size: 1rem;
+  }
+
+  .btn-regalo {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .icono-regalo {
+    font-size: 1.2rem;
+  }
+}
+
+
+
+/* Galeria */
+.galeria {
+  background-color: #ccc0a3;
+  background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.galeria-titulo {
+  font-size: 2.5rem;
+  font-family: 'Dancing Script', cursive;
+  color: #5a684d;
+  margin-bottom: 1.5rem;
+}
+
+/* Collage tipo grid con distribución personalizada */
+.galeria-collage {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "img1 img1 img1 img1"
+    "img2 img2 img2 img2"
+    "img3 img3 img3 img4"
+    "img5 img6 img7 img8"
+    "img9 img9 img10 img10";
+  gap: 8px;
+}
+
+/* Asignación de cada área */
+.img1 { grid-area: img1; width: 100%; height: auto; border-radius: 10px; }
+.img2 { grid-area: img2; width: 100%; height: auto; border-radius: 10px; }
+.img3 { grid-area: img3; width: 100%; height: auto; border-radius: 10px; }
+.img4 { grid-area: img4; width: 100%; height: auto; border-radius: 10px; }
+.img5 { grid-area: img5; width: 100%; height: auto; border-radius: 10px; }
+.img6 { grid-area: img6; width: 100%; height: auto; border-radius: 10px; }
+.img7 { grid-area: img7; width: 100%; height: auto; border-radius: 10px; }
+.img8 { grid-area: img8; width: 100%; height: auto; border-radius: 10px; }
+.img9 { grid-area: img9; width: 100%; height: auto; border-radius: 10px; }
+.img10 { grid-area: img10; width: 100%; height: auto; border-radius: 10px; }
+
+
+/* hospedaje */
+.hospedaje-section {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #fffdf9;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-family: 'Dancing Script', cursive;
+  color: #3b5c4a; /* mismo verde usado antes */
+  margin-bottom: 2rem;
+}
+
+.hospedaje-card {
+  margin-bottom: 2.5rem;
+}
+
+.hospedaje-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.hospedaje-card img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.hospedaje-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #2e8b57; /* mismo verde del título anterior */
+  color: #2e8b57;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hospedaje-btn:hover {
+  background-color: #2e8b57;
+  color: #fff;
+}
+
+
+.telefono {
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.telefono i {
+  color: #3b5c4a;
+  margin-right: 8px;
+}
+
+
+
+/* Sección final - Confirmación */
+/* Sección Confirmación Final */
+.confirmacion-final {
+  text-align: center;
+  background-color: #cfd6cb;
+background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  padding: 2rem 1rem;
+  color: rgb(154, 201, 154);
+  font-family: 'Poppins', sans-serif;
+}
+
+.confirmacion-final .img-principal {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-bottom: 10px solid #f5f5f5;
+}
+
+.confirmacion-final .img-sello {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: -50px auto 1rem auto;
+  display: block;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.texto-confirmacion h2,
+.texto-confirmacion p,
+.texto-confirmacion small,
+.texto-confirmacion h3 {
+  color: rgb(106, 158, 106);
+}
+
+.texto-confirmacion h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  color: rgb(106, 158, 106);
+   font-family: 'Playfair Display', serif;
+}
+
+.texto-confirmacion p {
+  font-size: 1rem;
+  margin: 0.6rem 0; /* antes: 0.3rem */
+  color: rgb(106, 158, 106);
+   font-family: 'Poppins', sans-serif;
+}
+
+.texto-confirmacion small {
+  display: block;
+  margin-top: 0.8rem;
+  margin-bottom: 1.2rem; /* más espacio antes del formulario */
+  font-size: 0.9rem;
+  color: rgb(106, 158, 106);
+   font-family: 'Poppins', sans-serif;
+}
+
+.texto-confirmacion h3 {
+  margin: 0.5rem 0;
+  color: rgb(106, 158, 106);
+   font-family: 'Poppins', sans-serif;
+}
+
+.icono-boleto {
+  font-size: 2.2rem;
+  color: rgb(106, 158, 106);
+  margin: 1rem 0;
+}
+
+/* Líneas */
+.linea {
+  width: 40%;
+  margin: 0.5rem auto;
+  border: 1px solid rgb(154, 201, 154);
+}
+
+/* Formulario */
+.formulario-confirmacion {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.formulario-confirmacion input,
+.formulario-confirmacion select,
+.formulario-confirmacion textarea {
+  padding: 0.75rem;
+  border: 1px solid rgb(154, 201, 154);
+  border-radius: 12px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  color: rgb(154, 201, 154);
+  background-color: rgb(245, 239, 239);
+}
+
+/* Botón enviar */
+.btn-enviar {
+  background-color: #000;
+  color: rgb(154, 201, 154);
+  padding: 0.6rem 1rem;
+  border: 2px solid rgb(154, 201, 154);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-enviar:hover {
+  background-color: #222;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .texto-confirmacion h2 {
+    font-size: 1.5rem;
+    color: rgb(106, 158, 106);
+  }
+
+  .texto-confirmacion p,
+  .texto-confirmacion small {
+    font-size: 1.2rem;
+    color: rgb(106, 158, 106);
+  }
+
+  .img-sello {
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+  }
+
+  .formulario-confirmacion {
+    padding: 0 1rem;
+  }
+}

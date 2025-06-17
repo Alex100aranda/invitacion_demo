@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación</title>
+
+  <!-- Preconexión para cargar fuentes más rápido -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <!-- Fuentes de Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Damion&family=Send+Flowers&display=swap" rel="stylesheet">
+
+  <!-- CSS personalizado -->
+  <link rel="stylesheet" href="invitacion.css">
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome actualizado desde jsDelivr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+
+   
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+  
+  <!-- Fondo principal con imagen centrada -->
+  <section class="background-image">
+    <div class="contenido-centro">
+      <img src="img/img1.png" alt="Invitación">
+    </div>
+  </section>
+
+
+<!-- Sección: Canción y contador -->
+<section class="seccion-cancion">
+  <div class="contenido-cancion">
+    <h2>ESCUCHA NUESTRA CANCIÓN</h2>
+    <audio id="cancion" src="music.mp3"></audio>
+    <button class="btn-play">
+      ▶ Play
+    </button>
+    <div class="contador" id="contador">
+      <div><span id="dias">00</span><p>Días</p></div>
+      <div><span id="horas">00</span><p>Horas</p></div>
+      <div><span id="minutos">00</span><p>Minutos</p></div>
+      <div><span id="segundos">00</span><p>Segundos</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Sección: Nuestros Padres -->
+<section class="seccion-padres">
+
+  <!-- Imagen fuera del contenedor -->
+  <img src="img/plantitas-1024x315.webp" alt="Nuestros Padres" class="imagen-padres">
+
+  <div class="contenedor-padre">
+    <h2 class="titulo-seccion">Nuestros Padres</h2>
+
+    <div class="divisor-padres">
+      <div class="lado">
+        <h3>Padres de la Novia</h3>
+        <p>Lucía Fernández</p>
+        <p>José Martínez</p>
+      </div>
+      <div class="lado">
+        <h3>Padres del Novio</h3>
+        <p>Claudia Ríos</p>
+        <p>Manuel Gómez</p>
+      </div>
+    </div>
+
+    <h2 class="titulo-seccion">Nuestros Padrinos</h2>
+    <p class="padrinos">Ana Beltrán</p>
+    <p class="padrinos">Carlos Méndez</p>
+  </div>
+</section>
+
+
+<!-- Sección: Fecha y Lugar -->
+<section class="seccion-papel">
+  <div class="tarjeta-interior">
+    <h2 class="titulo-seccion">Fecha y Lugar</h2>
+    <p class="fecha">30 de Agosto del 2025</p>
+    <p class="lugar">Hacienda Chimalpa</p>
+
+    <a href="https://maps.google.com/?q=Hacienda+Chimalpa" target="_blank" class="btn-ubicacion">
+      Ver ubicación
+    </a>
+
+    <img src="img/VENUE.webp" alt="Hacienda Chimalpa" class="imagen-ubicacion">
+  </div>
+</section>
+
+
+<!-- Sección: Itinerario -->
+<section class="seccion-itinerario">
+  <div class="contenedor-itinerario">
+
+    <div class="evento">
+      <h3>Ceremonia Religiosa - 4:30 PM</h3>
+      <img src="img/ceremonia.webp" alt="Ceremonia Religiosa">
+    </div>
+
+    <div class="evento">
+      <h3>Cóctel - 6:00 PM</h3>
+      <img src="img/coctail.webp" alt="Coctel">
+    </div>
+
+    <div class="evento">
+      <h3>Ceremonia Civil - 7:00 PM</h3>
+      <img src="img/cereminia.webp" alt="Ceremonia Civil">
+    </div>
+
+    <div class="evento">
+      <h3>Cena - 8:00 PM</h3>
+      <img src="img/cena.webp" alt="Cena">
+    </div>
+
+    <div class="evento">
+      <h3>Fiesta - 9:00 PM</h3>
+      <img src="img/fiesta.webp" alt="Fiesta">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Sección: Código de Vestimenta -->
+<section class="seccion-vestimenta">
+  
+<!-- Imagen fuera del contenedor -->
+  <img src="img/plantitas-1024x315.webp" alt="Nuestros Padres" class="imagen-padres">
+  <div class="contenedor-vestimenta">
+    <h2 class="titulo-seccion">Código de Vestimenta</h2>
+    <p class="subtitulo">Etiqueta formal</p>
+    <img src="img/codigo.webp" alt="Vestimenta" class="imagen-vestimenta">
+
+    <div class="bloque-vestimenta">
+      <div class="vestimenta-col">
+        <h3>Hombres</h3>
+        <a href="https://www.pinterest.com/buscar/hombres etiqueta formal boda" target="_blank" class="btn-pinterest">
+          <img src="img/logop.webp" alt="Pinterest"> Ver ideas
+        </a>
+      </div>
+
+      <div class="vestimenta-col">
+        <h3>Mujeres</h3>
+        <p class="nota-mujer">Evitar blanco, beige o ivory</p>
+        <a href="https://www.pinterest.com/buscar/mujeres etiqueta formal boda" target="_blank" class="btn-pinterest">
+          <img src="img/logop.webp" alt="Pinterest"> Ver ideas
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Sección: Galería 3 imagenes Flip -->
+<section class="seccion-flip">
+  <div class="contenedor-flip">
+    <div class="flip-card" onclick="this.classList.toggle('volteada')">
+      <div class="flip-inner">
+        <div class="flip-frente">
+          <img src="img/galeria1.png" alt="Imagen 1">
+        </div>
+        <div class="flip-atras">
+          <img src="img/delamano.jpg" alt="Imagen 1 Alternativa">
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('volteada')">
+      <div class="flip-inner">
+        <div class="flip-frente">
+          <img src="img/geleria2.png" alt="Imagen 2">
+        </div>
+        <div class="flip-atras">
+          <img src="img/abrazados.jpg" alt="Imagen 2 Alternativa">
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('volteada')">
+      <div class="flip-inner">
+        <div class="flip-frente">
+          <img src="img/galeria3.jpg" alt="Imagen 3">
+        </div>
+        <div class="flip-atras">
+          <img src="img/bicicleta.jpg" alt="Imagen 3 Alternativa">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Sección: Mesa de Regalos -->
+<section class="seccion-regalos">
+  <div class="contenedor-regalos">
+    <h2 class="titulo-seccion">MESA DE REGALOS</h2>
+    <p class="texto-regalos">
+      Tu presencia es nuestro mayor regalo, pero si quieres tener un detalle con nosotros, 
+      podrás hacerlo a través de nuestra mesa de regalos.
+    </p>
+
+    <a href="https://www.liverpool.com.mx/" target="_blank" class="btn-regalo">
+      <span class="icono-regalo">🎁</span>
+      Liverpool
+    </a>
+  </div>
+</section>
+
+
+<!-- Sección Galería -->
+<section class="galeria">
+  <h2 class="galeria-titulo">GALERÍA</h2>
+  <div class="galeria-collage">
+    <img src="img/foto1.jpg" class="img1" alt="Foto 1">
+    <img src="img/foto2.jpg" class="img2" alt="Foto 2">
+    <img src="img/foto3.jpg" class="img3" alt="Foto 3">
+    <img src="img/foto4.jpg" class="img4" alt="Foto 4">
+    <img src="img/foto5.jpg" class="img5" alt="Foto 5">
+    <img src="img/foto6.jpg" class="img6" alt="Foto 6">
+    <img src="img/foto7.jpg" class="img7" alt="Foto 7">
+    <img src="img/foto8.jpg" class="img8" alt="Foto 8">
+    <img src="img/foto9.jpg" class="img9" alt="Foto 9">
+    <img src="img/foto10.jpg" class="img10" alt="Foto 10">
+  </div>
+</section>
+
+
+<!-- Sección Sugerencia de Hospedaje -->
+<section class="hospedaje-section">
+  <h2 class="section-title">SUGERENCIA DE HOSPEDAJE</h2>
+
+  <!-- Hospedaje 1 -->
+  <div class="hospedaje-card">
+    <h3>Hacienda Chimalpa</h3>
+    <img src="img/hacienda.webp" alt="Hacienda Chimalpa">
+    <a href="https://haciendachimalpa.com/hotel-boutique-tematico/?wmode=transparenartt" target="_blank" class="hospedaje-btn">Ver hospedaje</a>
+  </div>
+
+  <!-- Hospedaje 2 -->
+  <div class="hospedaje-card">
+    <h3>Acopinalco Inn</h3>
+    <img src="img/acopinalco.webp" alt="Acopinalco Inn">
+    <a href="https://hotelacopinalco.com.mx/index.html" target="_blank" class="hospedaje-btn">Ver hospedaje</a>
+  </div>
+
+  <!-- Hospedaje 3 -->
+  <div class="hospedaje-card">
+    <h3>Hotel La Finca</h3>
+    <img src="img/hotel la finca.webp" alt="Hotel La Finca">
+    <p class="telefono"><i class="fas fa-phone-alt"></i> Tel: 5534554183</p>
+  </div>
+</section>
+
+
+<!-- Sección Confirmación Final -->
+<section class="confirmacion-final">
+  <!-- Imagen principal -->
+  <img src="img/fotografia.jpg" alt="Gracias" class="img-principal">
+
+  <!-- Imagen redonda tipo sello -->
+  <img src="img/KA.jpg" alt="Sello" class="img-sello">
+
+  <!-- Texto principal -->
+  <div class="texto-confirmacion">
+    <h2>GRACIAS POR ACOMPAÑARNOS</h2>
+    <p>Hemos asignado para ti</p>
+    <i class="fas fa-ticket-alt icono-boleto"></i>
+    <h3>2 pases</h3>
+    <hr class="linea" />
+    <p>No niños</p>
+    <hr class="linea" />
+    <p>Confirma tu asistencia</p>
+    <small>Antes del 30 de septiembre</small>
+  </div>
+
+  <!-- Formulario -->
+  <form action="https://wa.me/5215534554183" method="get" target="_blank" class="formulario-confirmacion">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="tel" name="telefono" placeholder="Teléfono" required>
+    <select name="asistencia" required>
+      <option value="">Confirmar asistencia</option>
+      <option value="si">Sí asistiré</option>
+      <option value="no">No podré asistir</option>
+    </select>
+    <textarea name="deseos" rows="4" placeholder="Déjanos tus buenos deseos"></textarea>
+    <button type="submit" class="btn-enviar">Enviar</button>
+  </form>
+</section>
+
+
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+<script>
+  const btnPlay = document.querySelector('.btn-play');
+  const cancion = document.getElementById('cancion');
+
+  btnPlay.addEventListener('click', () => {
+    if (cancion.paused) {
+      cancion.play();
+      btnPlay.textContent = '⏸ Pause';
+    } else {
+      cancion.pause();
+      btnPlay.textContent = '▶ Play';
+    }
+  });
+</script>
+
+
+
+<script>
+  const fechaBoda = new Date("2025-10-12T17:00:00"); // ajusta la fecha/hora aquí
+
+  function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = fechaBoda - ahora;
+
+    if (diferencia < 0) {
+      document.getElementById("contador").innerHTML = "<p>¡Ya estamos casados! 💍</p>";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / 1000 / 60) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
+    document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+    document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+    document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+  }
+
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
+</script>
+
+
+
+</body>
+</html>
