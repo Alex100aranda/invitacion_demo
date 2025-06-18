@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generador de Enlaces - Invitación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f5f2;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: #5d8a5a;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    select, button, input {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      border: 2px solid rgb(154, 201, 154);
+      margin: 1rem 0;
+      outline: none;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    button {
+      background-color: #000;
+      color: rgb(154, 201, 154);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #222;
+    }
+
+    #linkGenerado {
+      background-color: #fff;
+    }
+
+    .copiado {
+      color: green;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Generar enlace personalizado</h2>
+
+  <label for="cantidad">Cantidad de pases asignados:</label><br>
+  <select id="cantidad">
+    <option value="1">1 pase</option>
+    <option value="2" selected>2 pases</option>
+    <option value="3">3 pases</option>
+    <option value="4">4 pases</option>
+  </select>
+
+  <br>
+  <button onclick="generarLink()">Generar enlace</button>
+
+  <br>
+  <input type="text" id="linkGenerado" placeholder="Aquí aparecerá el enlace" readonly onclick="this.select()" />
+  <div id="mensajeCopiado" class="copiado"></div>
+
+  <script>
+    function generarLink() {
+      const cantidad = document.getElementById('cantidad').value;
+      const baseUrl = "https://invitacion-demo.vercel.app/?pases=";
+      const link = baseUrl + cantidad;
+      document.getElementById('linkGenerado').value = link;
+
+      // Copiar automáticamente al portapapeles
+      navigator.clipboard.writeText(link).then(() => {
+        document.getElementById('mensajeCopiado').textContent = '¡Enlace copiado al portapapeles!';
+        setTimeout(() => {
+          document.getElementById('mensajeCopiado').textContent = '';
+        }, 3000);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -284,7 +284,7 @@
     <h2>GRACIAS POR ACOMPAÑARNOS</h2>
     <p>Hemos asignado para ti</p>
     <i class="fas fa-ticket-alt icono-boleto"></i>
-    <h3>2 pases</h3>
+    <h3 id="numero-pases">2 pases</h3>
     <hr class="linea" />
     <p>No niños</p>
     <hr class="linea" />
@@ -292,17 +292,49 @@
     <small>Antes del 30 de septiembre</small>
   </div>
 
-<form onsubmit="enviarPorWhatsApp(event)" class="formulario-confirmacion">
-  <input type="text" id="nombre" placeholder="Nombre" required>
-  <input type="tel" id="telefono" placeholder="Teléfono" required>
-  <select id="asistencia" required>
-    <option value="">Confirmar asistencia</option>
-    <option value="Sí asistiré">Sí asistiré</option>
-    <option value="No podré asistir">No podré asistir</option>
-  </select>
-  <textarea id="deseos" rows="4" placeholder="Déjanos tus buenos deseos"></textarea>
-  <button type="submit" class="btn-enviar">Enviar</button>
-</form>
+  <!-- Formulario -->
+  <form onsubmit="enviarPorWhatsApp(event)" class="formulario-confirmacion">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="tel" id="telefono" placeholder="Teléfono" required>
+    <select id="asistencia" required>
+      <option value="">Confirmar asistencia</option>
+      <option value="Sí asistiré">Sí asistiré</option>
+      <option value="No podré asistir">No podré asistir</option>
+    </select>
+    <textarea id="deseos" rows="4" placeholder="Déjanos tus buenos deseos"></textarea>
+    <button type="submit" class="btn-enviar">Enviar</button>
+  </form>
+</section>
+
+<script>
+  // Mostrar número de pases desde parámetro en URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const pases = urlParams.get('pases');
+  if (pases) {
+    const textoPases = document.getElementById('numero-pases');
+    textoPases.textContent = `${pases} pase${pases > 1 ? 's' : ''}`;
+  }
+
+  // Función para enviar datos por WhatsApp
+  function enviarPorWhatsApp(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const asistencia = document.getElementById('asistencia').value;
+    const deseos = document.getElementById('deseos').value.trim();
+    const pasesTexto = pases ? `${pases} pase${pases > 1 ? 's' : ''}` : '2 pases';
+
+    const mensaje = `Hola, soy ${nombre} (${telefono}).\n` +
+                    `Confirmación: ${asistencia}.\n` +
+                    `Pases asignados: ${pasesTexto}.\n` +
+                    `Deseos: ${deseos}`;
+
+    const numeroWhatsApp = '5215536659768';
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+</script>
 
 
 
