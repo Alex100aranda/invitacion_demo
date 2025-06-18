@@ -307,35 +307,22 @@
 </section>
 
 <script>
-  // Mostrar número de pases desde parámetro en URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const pases = urlParams.get('pases');
-  if (pases) {
-    const textoPases = document.getElementById('numero-pases');
-    textoPases.textContent = `${pases} pase${pases > 1 ? 's' : ''}`;
-  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const pases = params.get("pases");
 
-  // Función para enviar datos por WhatsApp
-  function enviarPorWhatsApp(e) {
-    e.preventDefault();
+    if (pases && /^[1-4]$/.test(pases)) {
+      const textoPases = pases === "1" ? "1 pase" : `${pases} pases`;
+      const elemento = document.getElementById("numero-pases");
 
-    const nombre = document.getElementById('nombre').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const asistencia = document.getElementById('asistencia').value;
-    const deseos = document.getElementById('deseos').value.trim();
-    const pasesTexto = pases ? `${pases} pase${pases > 1 ? 's' : ''}` : '2 pases';
-
-    const mensaje = `Hola, soy ${nombre} (${telefono}).\n` +
-                    `Confirmación: ${asistencia}.\n` +
-                    `Pases asignados: ${pasesTexto}.\n` +
-                    `Deseos: ${deseos}`;
-
-    const numeroWhatsApp = '5215536659768';
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
-  }
+      if (elemento) {
+        elemento.textContent = textoPases;
+      }
+    }
+  });
 </script>
 
+</script>
 
 
 
