@@ -44,7 +44,7 @@
 <section class="seccion-cancion">
   <div class="contenido-cancion">
     <h2>ESCUCHA NUESTRA CANCIÓN</h2>
-    <audio id="cancion" src="music.mp3"></audio>
+    <audio id="cancion" src="cielo.mp3"></audio>
     <button class="btn-play">
       ▶ Play
     </button>
@@ -56,7 +56,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- Sección: Nuestros Padres -->
 <section class="seccion-padres">
@@ -84,7 +83,11 @@
     <p class="padrinos">Ana Beltrán</p>
     <p class="padrinos">Carlos Méndez</p>
   </div>
+
+  <!-- Imagen redonda tipo sello al final -->
+  <img src="img/KA.jpg" alt="Sello decorativo" class="sello-padres">
 </section>
+
 
 
 <!-- Sección: Fecha y Lugar -->
@@ -289,19 +292,18 @@
     <small>Antes del 30 de septiembre</small>
   </div>
 
-  <!-- Formulario -->
-  <form action="https://wa.me/5215534554183" method="get" target="_blank" class="formulario-confirmacion">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="tel" name="telefono" placeholder="Teléfono" required>
-    <select name="asistencia" required>
-      <option value="">Confirmar asistencia</option>
-      <option value="si">Sí asistiré</option>
-      <option value="no">No podré asistir</option>
-    </select>
-    <textarea name="deseos" rows="4" placeholder="Déjanos tus buenos deseos"></textarea>
-    <button type="submit" class="btn-enviar">Enviar</button>
-  </form>
-</section>
+<form onsubmit="enviarPorWhatsApp(event)" class="formulario-confirmacion">
+  <input type="text" id="nombre" placeholder="Nombre" required>
+  <input type="tel" id="telefono" placeholder="Teléfono" required>
+  <select id="asistencia" required>
+    <option value="">Confirmar asistencia</option>
+    <option value="Sí asistiré">Sí asistiré</option>
+    <option value="No podré asistir">No podré asistir</option>
+  </select>
+  <textarea id="deseos" rows="4" placeholder="Déjanos tus buenos deseos"></textarea>
+  <button type="submit" class="btn-enviar">Enviar</button>
+</form>
+
 
 
 
@@ -354,6 +356,25 @@
 
   setInterval(actualizarContador, 1000);
   actualizarContador();
+</script>
+
+
+<script>
+  function enviarPorWhatsApp(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const asistencia = document.getElementById('asistencia').value;
+    const deseos = document.getElementById('deseos').value.trim();
+
+    const numero = "5215536659768"; // Número al que se enviará el mensaje
+    const mensaje = `Hola! 👋\n\nSoy *${nombre}*, mi número es ${telefono}.\n✅ Asistencia: ${asistencia}\n📝 Deseos: ${deseos || 'Ninguno'}`;
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+  }
 </script>
 
 
