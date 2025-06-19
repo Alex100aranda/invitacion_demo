@@ -10,13 +10,31 @@
 <div class="background-image">
   <div class="contenido-centro">
     <img src="img/portada.jpg" alt="Logo de la boda">
- <a href="invitacion.html" class="btn-iniciar">
+ <a id="btn-iniciar" class="btn-iniciar">
   Iniciar <span class="flecha">➤</span>
 </a>
 
 
+
   </div>
 </div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const pases = params.get("pases");
+    const btn = document.getElementById("btn-iniciar");
+
+    if (pases && /^[1-4]$/.test(pases)) {
+      btn.href = `invitacion.html?pases=${pases}`;
+    } else {
+      btn.href = "invitacion.html"; // sin parámetros si no hay pases
+    }
+  });
+</script>
+
 
 </body>
 
