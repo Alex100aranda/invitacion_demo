@@ -615,7 +615,7 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
 
 .galeria-titulo {
   font-size: 2.5rem;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Playfair Display', serif;
   color: #5a684d;
   margin-bottom: 1.5rem;
 }
@@ -655,7 +655,7 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
 
 .section-title {
   font-size: 2.5rem;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Playfair Display', serif;
   color: #3b5c4a; /* mismo verde usado antes */
   margin-bottom: 2rem;
 }
