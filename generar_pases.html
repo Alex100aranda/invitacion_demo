@@ -72,20 +72,21 @@
   <div id="mensajeCopiado" class="copiado"></div>
 
   <script>
-    function generarLink() {
-      const cantidad = document.getElementById('cantidad').value;
-      const baseUrl = "https://invitacion-demo.vercel.app/invitacion.html?pases=";
-      const link = baseUrl + cantidad;
-      document.getElementById('linkGenerado').value = link;
+function generarLink() {
+  const cantidad = document.getElementById('cantidad').value;
+  const baseUrl = "https://invitacion-demo.vercel.app/index.html?pases=";
+  const link = baseUrl + cantidad;
+  document.getElementById('linkGenerado').value = link;
 
-      // Copiar automáticamente al portapapeles
-      navigator.clipboard.writeText(link).then(() => {
-        document.getElementById('mensajeCopiado').textContent = '¡Enlace copiado al portapapeles!';
-        setTimeout(() => {
-          document.getElementById('mensajeCopiado').textContent = '';
-        }, 3000);
-      });
-    }
+  // Copiar automáticamente al portapapeles
+  navigator.clipboard.writeText(link).then(() => {
+    document.getElementById('mensajeCopiado').textContent = '¡Enlace copiado al portapapeles!';
+    setTimeout(() => {
+      document.getElementById('mensajeCopiado').textContent = '';
+    }, 3000);
+  });
+}
+
   </script>
 
 </body>

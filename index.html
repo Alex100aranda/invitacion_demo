@@ -10,16 +10,11 @@
 <div class="background-image">
   <div class="contenido-centro">
     <img src="img/portada.jpg" alt="Logo de la boda">
- <a id="btn-iniciar" class="btn-iniciar">
-  Iniciar <span class="flecha">➤</span>
-</a>
-
-
-
+    <a id="btn-iniciar" class="btn-iniciar">
+      Iniciar <span class="flecha">➤</span>
+    </a>
   </div>
 </div>
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -28,14 +23,12 @@
     const btn = document.getElementById("btn-iniciar");
 
     if (pases && /^[1-4]$/.test(pases)) {
+      // Propagar parámetro a invitacion.html
       btn.href = `invitacion.html?pases=${pases}`;
     } else {
-      btn.href = "invitacion.html"; // sin parámetros si no hay pases
+      btn.href = "invitacion.html";
     }
   });
 </script>
-
-
 </body>
-
 </html>
