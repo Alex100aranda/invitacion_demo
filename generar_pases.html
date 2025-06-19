@@ -2,92 +2,140 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Generador de Enlaces - Invitación</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generar enlace de pases</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #f1f5f2;
-      padding: 3rem 1.5rem;
+      background: linear-gradient(135deg, #d2e8d2, #f9f9f9);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
       text-align: center;
-      color: #5d8a5a;
     }
 
     h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #4e944f;
     }
 
-    select, button, input {
-      font-family: inherit;
+    label {
+      font-weight: 600;
+      color: #4e944f;
+    }
+
+    select, input {
+      margin-top: 0.5rem;
+      padding: 0.8rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      border: 2px solid #a6d4a6;
+      border-radius: 12px;
       font-size: 1rem;
-      padding: 0.7rem 1rem;
-      border-radius: 10px;
-      border: 2px solid rgb(154, 201, 154);
-      margin: 1rem 0;
-      outline: none;
-      width: 90%;
-      max-width: 400px;
     }
 
     button {
-      background-color: #000;
-      color: rgb(154, 201, 154);
+      background-color: #4e944f;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
+      margin-bottom: 1rem;
     }
 
     button:hover {
-      background-color: #222;
+      background-color: #3a7a3a;
     }
 
-    #linkGenerado {
+    .copy-btn {
       background-color: #fff;
+      color: #4e944f;
+      border: 2px solid #4e944f;
     }
 
-    .copiado {
-      color: green;
+    .copy-btn:hover {
+      background-color: #e4f3e4;
+    }
+
+    .mensaje-copiado {
+      color: #4e944f;
       font-size: 0.9rem;
       margin-top: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Generar enlace de invitación</h2>
+    
+    <label for="cantidad">Selecciona la cantidad de pases:</label>
+    <select id="cantidad">
+      <option value="1">1 pase</option>
+      <option value="2">2 pases</option>
+      <option value="3">3 pases</option>
+      <option value="4">4 pases</option>
+    </select>
 
-  <h2>Generar enlace personalizado</h2>
+    <button onclick="generarLink()">Generar enlace</button>
 
-  <label for="cantidad">Cantidad de pases asignados:</label><br>
-  <select id="cantidad">
-    <option value="1">1 pase</option>
-    <option value="2" selected>2 pases</option>
-    <option value="3">3 pases</option>
-    <option value="4">4 pases</option>
-  </select>
-
-  <br>
-  <button onclick="generarLink()">Generar enlace</button>
-
-  <br>
-  <input type="text" id="linkGenerado" placeholder="Aquí aparecerá el enlace" readonly onclick="this.select()" />
-  <div id="mensajeCopiado" class="copiado"></div>
+    <input type="text" id="linkGenerado" readonly placeholder="Enlace" />
+    
+    <button class="copy-btn" onclick="copiarEnlace()">Copiar enlace</button>
+    <div class="mensaje-copiado" id="mensajeCopiado">¡Enlace copiado al portapapeles!</div>
+  </div>
 
   <script>
-function generarLink() {
-  const cantidad = document.getElementById('cantidad').value;
-  const baseUrl = "https://invitacion-demo.vercel.app/index.html?pases=";
-  const link = baseUrl + cantidad;
-  document.getElementById('linkGenerado').value = link;
+    function generarLink() {
+      const cantidad = document.getElementById('cantidad').value;
+      const link = `https://invitacion-demo.vercel.app/index.html?pases=${cantidad}`;
+      document.getElementById('linkGenerado').value = link;
+      document.getElementById('mensajeCopiado').style.display = 'none';
+    }
 
-  // Copiar automáticamente al portapapeles
-  navigator.clipboard.writeText(link).then(() => {
-    document.getElementById('mensajeCopiado').textContent = '¡Enlace copiado al portapapeles!';
-    setTimeout(() => {
-      document.getElementById('mensajeCopiado').textContent = '';
-    }, 3000);
-  });
-}
+    function copiarEnlace() {
+      const input = document.getElementById('linkGenerado');
+      input.select();
+      input.setSelectionRange(0, 99999);
 
+      navigator.clipboard.writeText(input.value)
+        .then(() => {
+          document.getElementById('mensajeCopiado').style.display = 'block';
+        })
+        .catch(err => {
+          alert('Error al copiar el enlace: ' + err);
+        });
+    }
   </script>
-
 </body>
 </html>
