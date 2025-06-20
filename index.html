@@ -20,15 +20,22 @@
   document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const pases = params.get("pases");
+    const nombre = params.get("nombre");
     const btn = document.getElementById("btn-iniciar");
 
+    let url = "invitacion.html";
+
+    // Si hay parámetros válidos, construye la URL con ellos
     if (pases && /^[1-4]$/.test(pases)) {
-      // Propagar parámetro a invitacion.html
-      btn.href = `invitacion.html?pases=${pases}`;
-    } else {
-      btn.href = "invitacion.html";
+      url += `?pases=${pases}`;
+      if (nombre) {
+        url += `&nombre=${encodeURIComponent(nombre)}`;
+      }
     }
+
+    btn.href = url;
   });
 </script>
+
 </body>
 </html>
