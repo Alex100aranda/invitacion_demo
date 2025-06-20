@@ -66,26 +66,33 @@
 </head>
 <body>
 
-  <div class="card">
-    <h1>¡Este es tu pase de acceso!</h1>
-    <p id="mensaje"></p>
-    <img id="codigoQR" class="qr" alt="Código QR" />
-  </div>
+ <div class="card">
+  <h1>¡Este es tu pase de acceso!</h1>
+  <p id="mensaje"></p>
+  <img id="codigoQR" class="qr" alt="Código QR" />
+</div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const nombre = decodeURIComponent(params.get('nombre') || '');
-    const pases = params.get('pases') || '';
-    const mensaje = document.getElementById('mensaje');
-    const qr = document.getElementById('codigoQR');
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const nombre = decodeURIComponent(params.get('nombre') || '');
+  const pases = params.get('pases') || '';
+  const mensaje = document.getElementById('mensaje');
+  const qr = document.getElementById('codigoQR');
 
-    const texto = nombre ? `${nombre}, este es tu pase con ${pases} ${pases === "1" ? "pase" : "pases"}.` : `Bienvenido ${pases} ${pases === "1" ? "" : ""}.`;
-    mensaje.textContent = texto;
+  // Generar el texto que se mostrará en pantalla
+  const texto = nombre
+    ? `${nombre}, este es tu pase con ${pases} ${pases === "1" ? "pase" : "pases"}.`
+    : `Este es tu pase con ${pases} ${pases === "1" ? "pase" : "pases"}.`;
 
-    // Generar QR con la misma URL
-    const currentURL = window.location.href;
-    qr.src = `https://quickchart.io/qr?text=${encodeURIComponent(currentURL)}&size=200`;
-  </script>
+  mensaje.textContent = texto;
+
+  // Texto personalizado para el QR
+  const textoQR = nombre
+    ? `Pase válido para: ${nombre} - Boda Karla y Alex - ${pases} ${pases === "1" ? "pase" : "pases"}`
+    : `Pase válido - Boda Karla y Alex - ${pases} ${pases === "1" ? "pase" : "pases"}`;
+
+  qr.src = `https://quickchart.io/qr?text=${encodeURIComponent(textoQR)}&size=200`;
+</script>
 
 </body>
 </html>
