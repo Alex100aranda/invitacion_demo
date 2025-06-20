@@ -98,7 +98,10 @@
 <body>
   <div class="container">
     <h2>Generar enlace de invitación</h2>
-    
+
+    <label for="nombre">Nombre del invitado:</label>
+    <input type="text" id="nombre" placeholder="Ej. María Pérez" />
+
     <label for="cantidad">Selecciona la cantidad de pases:</label>
     <select id="cantidad">
       <option value="1">1 pase</option>
@@ -110,7 +113,7 @@
     <button onclick="generarLink()">Generar enlace</button>
 
     <input type="text" id="linkGenerado" readonly placeholder="Enlace" />
-    
+
     <button class="copy-btn" onclick="copiarEnlace()">Copiar enlace</button>
     <div class="mensaje-copiado" id="mensajeCopiado">¡Enlace copiado al portapapeles!</div>
   </div>
@@ -118,7 +121,12 @@
   <script>
     function generarLink() {
       const cantidad = document.getElementById('cantidad').value;
-      const link = `https://invitacion-demo.vercel.app/index.html?pases=${cantidad}`;
+      const nombre = encodeURIComponent(document.getElementById('nombre').value.trim());
+      const baseURL = 'https://invitacion-demo.vercel.app/index.html';
+      let link = `${baseURL}?pases=${cantidad}`;
+      if (nombre) {
+        link += `&nombre=${nombre}`;
+      }
       document.getElementById('linkGenerado').value = link;
       document.getElementById('mensajeCopiado').style.display = 'none';
     }

@@ -283,6 +283,7 @@
   <div class="texto-confirmacion">
     <h2>GRACIAS POR ACOMPAÑARNOS</h2>
     <p>Hemos asignado para ti</p>
+    <p id="nombre-invitado"></p>
     <i class="fas fa-ticket-alt icono-boleto"></i>
     <h3 id="numero-pases">2 pases</h3>
     <hr class="linea" />
@@ -306,25 +307,31 @@
   </form>
 </section>
 
+<!-- DOM pases y nombre -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const pases = params.get("pases");
+    const nombre = params.get("nombre");
 
+    // Mostrar número de pases
     if (pases && /^[1-4]$/.test(pases)) {
       const textoPases = pases === "1" ? "1 pase" : `${pases} pases`;
       const elemento = document.getElementById("numero-pases");
-
       if (elemento) {
         elemento.textContent = textoPases;
       }
     }
+
+    // Mostrar nombre del invitado
+    if (nombre) {
+      const nombreElemento = document.getElementById("nombre-invitado");
+      if (nombreElemento) {
+        nombreElemento.textContent = nombre;
+      }
+    }
   });
 </script>
-
-</script>
-
-
 
 <!-- AOS JS -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
