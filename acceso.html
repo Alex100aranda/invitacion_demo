@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu Pase de Invitado</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e0f2e9, #fefefe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+      color: #2e7d32;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #388e3c;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .qr {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.5rem 1rem;
+      }
+
+      .card h1 {
+        font-size: 1.5rem;
+      }
+
+      .qr {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>¡Este es tu pase de acceso!</h1>
+    <p id="mensaje"></p>
+    <img id="codigoQR" class="qr" alt="Código QR" />
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const nombre = decodeURIComponent(params.get('nombre') || '');
+    const pases = params.get('pases') || '';
+    const mensaje = document.getElementById('mensaje');
+    const qr = document.getElementById('codigoQR');
+
+    const texto = nombre ? `${nombre}, este es tu pase con ${pases} ${pases === "1" ? "pase" : "pases"}.` : `Bienvenido ${pases} ${pases === "1" ? "" : ""}.`;
+    mensaje.textContent = texto;
+
+    // Generar QR con la misma URL
+    const currentURL = window.location.href;
+    qr.src = `https://quickchart.io/qr?text=${encodeURIComponent(currentURL)}&size=200`;
+  </script>
+
+</body>
+</html>

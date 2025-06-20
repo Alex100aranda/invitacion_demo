@@ -783,6 +783,19 @@ background-image: url("https://www.transparenttextures.com/patterns/45-degree-fa
   margin: 1rem 0;
 }
 
+.img-ticket {
+  width: 60px;
+  height: 60px;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.img-ticket:hover {
+  transform: scale(1.1);
+}
+
+
 /* Líneas */
 .linea {
   width: 40%;
