@@ -317,7 +317,7 @@
     const nombre = params.get("nombre");
 
     // Mostrar número de pases
-    if (pases && /^[1-4]$/.test(pases)) {
+    if (pases && /^[1-8]$/.test(pases)) {
       const textoPases = pases === "1" ? "1 pase" : `${pases} pases`;
       const elemento = document.getElementById("numero-pases");
       if (elemento) {

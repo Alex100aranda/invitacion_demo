@@ -26,7 +26,7 @@
     let url = "invitacion.html";
 
     // Si hay parámetros válidos, construye la URL con ellos
-    if (pases && /^[1-4]$/.test(pases)) {
+    if (pases && /^[1-8]$/.test(pases)) {
       url += `?pases=${pases}`;
       if (nombre) {
         url += `&nombre=${encodeURIComponent(nombre)}`;
