@@ -122,30 +122,170 @@
     <div class="mensaje-copiado" id="mensajeCopiado">¡Enlace copiado al portapapeles!</div>
   </div>
 
-  <script>
 
-function guardarEnSheet(nombre, pases) {
-  fetch("https://script.google.com/macros/s/AKfycbyi_Iuuk5wpXApvBRzffBaGy7uCefJlcyA6u-xGbhJxYKiK4lvF7H99_aaN1vbOCLrs7A/exec", {
-    method: "POST",
-    body: JSON.stringify({ nombre, pases }),
-    headers: {
-      "Content-Type": "application/json"
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generar enlace de pases</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  })
-  .then(response => response.text())
-  .then(result => console.log("Guardado:", result))
-  .catch(error => console.error("Error:", error));
-}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d2e8d2, #f9f9f9);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #4e944f;
+    }
+
+    label {
+      font-weight: 600;
+      color: #4e944f;
+    }
+
+    select, input {
+      margin-top: 0.5rem;
+      padding: 0.8rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      border: 2px solid #a6d4a6;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #4e944f;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    button:hover {
+      background-color: #3a7a3a;
+    }
+
+    .copy-btn {
+      background-color: #fff;
+      color: #4e944f;
+      border: 2px solid #4e944f;
+    }
+
+    .copy-btn:hover {
+      background-color: #e4f3e4;
+    }
+
+    .mensaje-copiado {
+      color: #4e944f;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Generar enlace de invitación</h2>
+
+    <label for="nombre">Nombre del invitado:</label>
+    <input type="text" id="nombre" placeholder="Ej. María Pérez" />
+
+    <label for="cantidad">Selecciona la cantidad de pases:</label>
+    <select id="cantidad">
+      <option value="1">1 pase</option>
+      <option value="2">2 pases</option>
+      <option value="3">3 pases</option>
+      <option value="4">4 pases</option>
+      <option value="5">5 pases</option>
+      <option value="6">6 pases</option>
+      <option value="7">7 pases</option>
+      <option value="8">8 pases</option>
+    </select>
+
+    <button onclick="generarLink()">Generar enlace</button>
+
+    <input type="text" id="linkGenerado" readonly placeholder="Enlace" />
+
+    <button class="copy-btn" onclick="copiarEnlace()">Copiar enlace</button>
+    <div class="mensaje-copiado" id="mensajeCopiado">¡Enlace copiado al portapapeles!</div>
+  </div>
+
+
+  <script>
+    function guardarEnSheet(nombre, pases) {
+      fetch("https://script.google.com/macros/s/AKfycbyi_Iuuk5wpXApvBRzffBaGy7uCefJlcyA6u-xGbhJxYKiK4lvF7H99_aaN1vbOCLrs7A/exec", {
+        method: "POST",
+        body: JSON.stringify({ nombre, pases }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.text())
+      .then(result => {
+        console.log("Guardado:", result);
+        alert("✅ Invitado guardado con éxito en la hoja de cálculo.");
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Hubo un error al guardar los datos. Intenta nuevamente.");
+      });
+    }
+
     function generarLink() {
       const cantidad = document.getElementById('cantidad').value;
-      const nombre = encodeURIComponent(document.getElementById('nombre').value.trim());
+      const nombreCampo = document.getElementById('nombre').value.trim();
+      const nombre = encodeURIComponent(nombreCampo);
       const baseURL = 'https://invitacion-demo.vercel.app/index.html';
+
       let link = `${baseURL}?pases=${cantidad}`;
       if (nombre) {
         link += `&nombre=${nombre}`;
       }
+
       document.getElementById('linkGenerado').value = link;
       document.getElementById('mensajeCopiado').style.display = 'none';
+
+      if (nombreCampo && cantidad) {
+        guardarEnSheet(nombreCampo, cantidad);
+      }
     }
 
     function copiarEnlace() {
@@ -164,3 +304,9 @@ function guardarEnSheet(nombre, pases) {
   </script>
 </body>
 </html>
+
+</body>
+</html>
+
+
+
