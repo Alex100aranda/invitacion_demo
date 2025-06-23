@@ -11,7 +11,6 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #d2e8d2, #f9f9f9);
@@ -23,7 +22,6 @@
       padding: 2rem;
       min-height: 100vh;
     }
-
     .container {
       background: white;
       padding: 2rem;
@@ -33,18 +31,15 @@
       max-width: 420px;
       text-align: center;
     }
-
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1.5rem;
       color: #4e944f;
     }
-
     label {
       font-weight: 600;
       color: #4e944f;
     }
-
     select, input {
       margin-top: 0.5rem;
       padding: 0.8rem;
@@ -54,7 +49,6 @@
       border-radius: 12px;
       font-size: 1rem;
     }
-
     button {
       background-color: #4e944f;
       color: white;
@@ -66,28 +60,23 @@
       transition: background 0.3s ease;
       margin-bottom: 1rem;
     }
-
     button:hover {
       background-color: #3a7a3a;
     }
-
     .copy-btn {
       background-color: #fff;
       color: #4e944f;
       border: 2px solid #4e944f;
     }
-
     .copy-btn:hover {
       background-color: #e4f3e4;
     }
-
     .mensaje-copiado {
       color: #4e944f;
       font-size: 0.9rem;
       margin-top: 0.5rem;
       display: none;
     }
-
     @media (max-width: 480px) {
       h2 {
         font-size: 1.4rem;
@@ -122,76 +111,66 @@
     <div class="mensaje-copiado" id="mensajeCopiado">¡Enlace copiado al portapapeles!</div>
   </div>
 
-
   <script>
-  function guardarEnSheet(nombre, pases) {
-    const endpoint = "https://script.google.com/macros/s/AKfycbzZqC7Qf1vTTUdnQ5bVzNec8WJe0PyjYgU8ARF0CEyEIPLfScxI8hEeUq-0H8uW2Mx-zA/exec";
+    function guardarEnSheet(nombre, pases) {
+      const endpoint = "https://script.google.com/macros/s/AKfycbzZqC7Qf1vTTUdnQ5bVzNec8WJe0PyjYgU8ARF0CEyEIPLfScxI8hEeUq-0H8uW2Mx-zA/exec";
 
-    fetch(endpoint, {
-      method: "POST",
-      body: JSON.stringify({ nombre, pases }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => response.text())
-    .then(result => {
-      console.log("Guardado:", result);
-      if (result.includes("OK")) {
-        alert("✅ Invitado guardado con éxito en la hoja de cálculo.");
-      } else {
-        alert("⚠️ La respuesta no fue válida: " + result);
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("❌ Error al guardar los datos. Verifica la URL y permisos del script.");
-    });
-  }
-
-  function generarLink() {
-    const cantidad = document.getElementById('cantidad').value;
-    const nombreCampo = document.getElementById('nombre').value.trim();
-
-    if (!nombreCampo) {
-      alert("Por favor escribe un nombre.");
-      return;
-    }
-
-    const nombre = encodeURIComponent(nombreCampo);
-    const baseURL = 'https://invitacion-demo.vercel.app/index.html';
-    let link = `${baseURL}?pases=${cantidad}`;
-
-    if (nombre) {
-      link += `&nombre=${nombre}`;
-    }
-
-    document.getElementById('linkGenerado').value = link;
-    document.getElementById('mensajeCopiado').style.display = 'none';
-
-    guardarEnSheet(nombreCampo, cantidad);
-  }
-
-  function copiarEnlace() {
-    const input = document.getElementById('linkGenerado');
-    input.select();
-    input.setSelectionRange(0, 99999);
-
-    navigator.clipboard.writeText(input.value)
-      .then(() => {
-        document.getElementById('mensajeCopiado').style.display = 'block';
+      fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({ nombre, pases }),
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
-      .catch(err => {
-        alert('Error al copiar el enlace: ' + err);
+      .then(response => response.text())
+      .then(result => {
+        console.log("Guardado:", result);
+        if (result.includes("OK")) {
+          alert("✅ Invitado guardado con éxito en la hoja de cálculo.");
+        } else {
+          alert("⚠️ La respuesta del servidor fue inesperada: " + result);
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Error al guardar. Verifica la URL del script, los permisos, o si tu cuenta Google es de tipo Workspace.");
       });
-  }
-</script>
+    }
 
+    function generarLink() {
+      const cantidad = document.getElementById('cantidad').value;
+      const nombreCampo = document.getElementById('nombre').value.trim();
+
+      if (!nombreCampo) {
+        alert("Por favor, ingresa un nombre válido.");
+        return;
+      }
+
+      const nombre = encodeURIComponent(nombreCampo);
+      const baseURL = 'https://invitacion-demo.vercel.app/index.html';
+      let link = `${baseURL}?pases=${cantidad}`;
+      if (nombre) {
+        link += `&nombre=${nombre}`;
+      }
+
+      document.getElementById('linkGenerado').value = link;
+      document.getElementById('mensajeCopiado').style.display = 'none';
+
+      guardarEnSheet(nombreCampo, cantidad);
+    }
+
+    function copiarEnlace() {
+      const input = document.getElementById('linkGenerado');
+      input.select();
+      input.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(input.value)
+        .then(() => {
+          document.getElementById('mensajeCopiado').style.display = 'block';
+        })
+        .catch(err => {
+          alert('Error al copiar el enlace: ' + err);
+        });
+    }
+  </script>
 </body>
 </html>
-
-</body>
-</html>
-
-
-
