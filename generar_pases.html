@@ -112,32 +112,7 @@
   </div>
 
   <script>
-    function guardarEnSheet(nombre, pases) {
-      const endpoint = "https://script.google.com/macros/s/AKfycbzZqC7Qf1vTTUdnQ5bVzNec8WJe0PyjYgU8ARF0CEyEIPLfScxI8hEeUq-0H8uW2Mx-zA/exec";
-
-
-      fetch(endpoint, {
-        method: "POST",
-        body: JSON.stringify({ nombre, pases }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => response.text())
-      .then(result => {
-        console.log("Guardado:", result);
-        if (result.includes("OK")) {
-          alert("✅ Invitado guardado con éxito en la hoja de cálculo.");
-        } else {
-          alert("⚠️ La respuesta del servidor fue inesperada: " + result);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("❌ Error al guardar. Verifica la URL del script, los permisos, o si tu cuenta Google es de tipo Workspace.");
-      });
-    }
-
+    
     function generarLink() {
       const cantidad = document.getElementById('cantidad').value;
       const nombreCampo = document.getElementById('nombre').value.trim();
